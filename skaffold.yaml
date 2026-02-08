@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: sample-static-go-gin
+build:
+  local: {}
+  artifacts:
+    - image: sample-static-go-gin-frontend
+      context: frontend
+      buildpacks:
+        builder: paketobuildpacks/builder-jammy-base
+    - image: sample-static-go-gin-api
+      context: api
+      buildpacks:
+        builder: paketobuildpacks/builder-jammy-base
+deploy: {}
